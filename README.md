@@ -1,30 +1,16 @@
-# Portfolio – Syrine Chehairi
+# Portfolio — Syrine Chehairi
 
-Portfolio **Streamlit** multipage (pastel, responsive) pour présenter mes compétences, projets et expériences.
+Portfolio statique responsive : ingénierie informatique, développement, data, calcul scientifique et HPC.
 
-👉 **Démo** : <https://syrinechehairi-portfolio.hf.space>  
-👉 **CV & Contact** : voir page *Contact* du site
+## Déploiement sur Vercel
 
----
+Importer ce dépôt, branche main. Preset Other, racine vide, aucune commande de build, Output Directory dist. Aucune variable d’environnement nécessaire. La configuration vercel.json fournit ces réglages.
 
-## ✨ Fonctionnalités
-- Barre de **navigation** sticky (pastel)
-- Pages : **Accueil**, **Compétences**, **Projets** (descriptions), **Expériences**, **Formations**, **Contact**
-- Design sobre + lisible (cartes, tags, couleurs pastels)
-- Assets optionnels : `assets/photo.jpg`, `assets/CV_Syrine_Chehairi.pdf`
+## Structure
 
-## 🧰 Stack
-- Python 3.10+
-- Streamlit
-- Pillow (affichage images)
+- dist/index.html : contenu et sections
+- dist/style.css : design responsive et animations
+- dist/script.js : filtres et aperçus de projets
+- dist/assets/ : illustration et CV PDF
 
-## 🚀 Lancer en local
-```bash
-python -m venv .venv
-# Windows
-.venv\Scripts\activate
-# macOS / Linux
-source .venv/bin/activate
-
-pip install -r requirements.txt
-streamlit run app.py
+Le CV est la version fournie en septembre 2026. Les aperçus des projets sont illustratifs ; les boutons de démonstration ouvrent les applications réelles. Le fichier projet.py conserve l’ancien portfolio Streamlit.
