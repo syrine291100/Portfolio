@@ -237,22 +237,46 @@ def page_skills():
     section_title("Compétences")
     st.markdown("<div class='card'>", unsafe_allow_html=True)
     st.markdown("**Langages**")
-    for s in ["Python", "Java", "C/C++", "JavaScript", "SQL", "PHP", "Julia", "Bash"]:
+    for s in ["Python", "Java", "C/C++", "JavaScript", "TypeScript", "SQL", "PHP", "Julia", "Bash"]:
         st.markdown(f"<span class='pill'>{s}</span>", unsafe_allow_html=True)
     st.markdown("<br><br>**Frameworks & libs**", unsafe_allow_html=True)
-    for s in ["Django", "React (bases)", "TensorFlow (bases)", "PyTest", "NumPy", "Pandas", "Matplotlib"]:
+    for s in ["Django", "React", "Next.js", "FastAPI", "Streamlit", "SQLAlchemy", "Plotly", "TensorFlow (bases)", "PyTest", "NumPy", "Pandas", "Matplotlib"]:
         st.markdown(f"<span class='pill'>{s}</span>", unsafe_allow_html=True)
     st.markdown("<br><br>**Data / HPC**", unsafe_allow_html=True)
     for s in ["Méthode Monte Carlo", "CUDA (bases GPU)", "Excel avancé", "Git"]:
         st.markdown(f"<span class='pill'>{s}</span>", unsafe_allow_html=True)
     st.markdown("<br><br>**Systèmes / Cloud**", unsafe_allow_html=True)
-    for s in ["Linux", "Windows", "Docker", "CI/CD (léger)"]:
+    for s in ["Linux", "Windows", "Docker", "GitHub Actions", "PostgreSQL", "Vercel", "Render", "Neon"]:
         st.markdown(f"<span class='pill'>{s}</span>", unsafe_allow_html=True)
     st.markdown("</div>", unsafe_allow_html=True)
 
 def page_projects():
     section_title("Projets")
     projects = [
+        {
+            "title": "TaskHub — Gestion de projets et de tâches",
+            "bullets": [
+                "Application web avec inscription, connexion et gestion de projets.",
+                "Tableau de tâches : création, déplacement et sauvegarde persistante.",
+                "API FastAPI et base PostgreSQL, migrations et tests automatisés.",
+                "Déploiement du frontend sur Vercel, de l’API sur Render et de la base sur Neon."
+            ],
+            "stack": ["Next.js", "TypeScript", "FastAPI", "PostgreSQL", "Docker", "GitHub Actions"],
+            "demo": "https://task-hub-ochre.vercel.app/",
+            "github": "https://github.com/syrine291100/TaskHub"
+        },
+        {
+            "title": "DataPulse — Pipeline CSV et analyse de ventes",
+            "bullets": [
+                "Import CSV avec prévisualisation et rapport d’anomalies par ligne.",
+                "Import transactionnel et protection contre les doublons.",
+                "Tableau de bord : chiffre d’affaires, volumes, trois graphiques et filtres.",
+                "Historique des imports, 180 ventes fictives et 15 tests de validation et d’API."
+            ],
+            "stack": ["Python", "pandas", "FastAPI", "PostgreSQL", "Streamlit", "Plotly", "Docker"],
+            "demo": "https://datapulse-api.streamlit.app/",
+            "github": "https://github.com/syrine291100/Datapulse"
+        },
         {
             "title": "Outil Monte Carlo (Edvance)",
             "bullets": [
@@ -292,6 +316,12 @@ def page_projects():
     for p in projects:
         st.markdown("<div class='card'>", unsafe_allow_html=True)
         st.markdown(f"### {p['title']}")
+        if p.get("demo"):
+            demo_col, code_col = st.columns(2)
+            with demo_col:
+                st.link_button("Voir la démo", p["demo"], use_container_width=True)
+            with code_col:
+                st.link_button("Code sur GitHub", p["github"], use_container_width=True)
         for b in p["bullets"]:
             st.write(f"- {b}")
         if p.get("stack"):
@@ -381,7 +411,7 @@ def page_message():
                     writer.writerow([datetime.now().isoformat(), name, email, subject, message])
                 st.info("Message archivé dans messages.csv 📄")
 
-           st.markdown("</div>", unsafe_allow_html=True)
+    st.markdown("</div>", unsafe_allow_html=True)
 
 # ---------------- ROUTER -----------------
 ROUTES = {
